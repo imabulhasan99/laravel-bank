@@ -118,7 +118,7 @@ class TransactionService
         $currentMonthLimit = 5000 - $currentMonthWithdrawals;
         $todayLimit = 1000 - $todayWithdrawals;
 
-        return ($amount <= $currentMonthLimit && $amount <= $todayLimit) ? 0 : $amount * (0.015 / 100);
+        return ($amount <= $currentMonthLimit && $amount <= $todayLimit) ? 0 : $amount * 0.015 ;
     }
 
     private function checkSufficientBalance($user, $amount, $fee): void
