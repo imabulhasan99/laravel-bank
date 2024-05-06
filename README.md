@@ -4,6 +4,7 @@
 <ol>
         <li>Clone the repository from GitHub. <code>git clone https://github.com/imabulhasan99/laravel-bank.git</code></li>
         <li>Install Composer dependencies by running <code>composer install</code>.</li>
+        <li>Copy .env from .env.example <code>cp .env.example .env</code>.</li>
         <li>Create a new database and configure the database connection in the <code>.env</code> file.</li>
         <li>Run migrations and seeders with <code>php artisan migrate</code>.</li>
         <li>Generate an application key with <code>php artisan key:generate</code>.</li>
