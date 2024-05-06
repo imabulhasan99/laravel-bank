@@ -16,6 +16,15 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="account_type" :value="__('Account Type')" />
+            <select id="account_type" name="account_type" class="form-select mt-1 block w-full" required>
+                <option value="{{ App\Enums\AccountType::Individual }}">Individual</option>
+                <option value="{{ App\Enums\AccountType::Business }}">Business</option>
+            </select>
+            <x-input-error :messages="$errors->get('account_type')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
