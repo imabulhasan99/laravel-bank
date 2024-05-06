@@ -23,6 +23,12 @@
                     </x-nav-link>
                 </div>
 
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('transaction.withdraw')" :active="request()->routeIs('transaction.withdraw')">
+                        {{ __('Withdraw Transaction') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->

@@ -10,6 +10,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
     Route::get('/deposit', [TransactionController::class, 'depositTransction'])->name('transaction.deposit');
     Route::post('/deposit', [TransactionController::class, 'addDeposit'])->name('transaction.deposit');
+    Route::get('/withdrawal', [TransactionController::class, 'withdrawTransction'])->name('transaction.withdraw');
+    Route::post('/withdrawal', [TransactionController::class, 'addWithdraw'])->name('transaction.withdraw');
 
 
 

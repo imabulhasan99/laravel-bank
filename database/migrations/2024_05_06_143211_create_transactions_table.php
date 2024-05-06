@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->enum('transaction_type', [TransactionType::Deposit->value, TransactionType::Withdraw->value]);
             $table->double('amount');
-            $table->decimal('fee');
+            $table->decimal('fee', 10,2);
             $table->date('date');
             $table->timestamps();
         });
