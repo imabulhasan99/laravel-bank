@@ -7,8 +7,9 @@ use App\Http\Controllers\TransactionController;
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', [TransactionController::class, 'index'])->name('dashboard');
-
+    Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+    Route::get('/deposit', [TransactionController::class, 'depositTransction'])->name('transaction.deposit');
+    Route::post('/deposit', [TransactionController::class, 'addDeposit'])->name('transaction.deposit');
 
 
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->enum('transaction_type', [TransactionType::Credit->value, TransactionType::Debit->value]);
+            $table->enum('transaction_type', [TransactionType::Deposit->value, TransactionType::Withdraw->value]);
             $table->double('amount');
             $table->decimal('fee');
             $table->date('date');
