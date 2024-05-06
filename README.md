@@ -2,7 +2,7 @@
 ## Laravel Bank Management System
 <h2>Installation Guide</h2>
 <ol>
-        <li>Clone the repository from GitHub. <code>git clone -</code></li>
+        <li>Clone the repository from GitHub. <code>git clone https://github.com/imabulhasan99/laravel-bank.git</code></li>
         <li>Install Composer dependencies by running <code>composer install</code>.</li>
         <li>Create a new database and configure the database connection in the <code>.env</code> file.</li>
         <li>Run migrations and seeders with <code>php artisan migrate</code>.</li>
