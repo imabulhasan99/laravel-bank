@@ -19,4 +19,10 @@ class Transaction extends Model
         'date',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'amount' => 'double',
+        ];
+    }
 }

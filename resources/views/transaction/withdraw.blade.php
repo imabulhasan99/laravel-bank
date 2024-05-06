@@ -10,6 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-lg font-semibold mb-4">Withdraw Transactions</h3>
+                     @if ($balance > 0)
+                        <p class="text-md font-semibold mb-4 text-red-500">Balance: {{ $balance }}</p>
+                    @endif
                     @session('status')
                         <p class="text-md font-semibold mb-4 text-green-500">{{ $value }}</p>
                     @endsession
@@ -43,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($withTransactions as $transaction)
+                                @foreach ($withdrawTransactions as $transaction)
                                     <tr class="{{ $loop->odd ? 'bg-gray-50' : 'bg-white' }}">
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->id }}</td>
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->user_id }}</td>
