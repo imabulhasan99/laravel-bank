@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\Transaction;
 use App\Enums\TransactionType;
+use App\Models\Transaction;
 
 class TransactionObserver
 {

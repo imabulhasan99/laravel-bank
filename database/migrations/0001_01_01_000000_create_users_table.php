@@ -1,9 +1,10 @@
 <?php
 
+use App\Enums\AccountType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\AccountType;
+
 return new class extends Migration
 {
     /**

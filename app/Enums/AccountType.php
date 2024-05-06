@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum AccountType :string
+enum AccountType: string
 {
     case Individual = 'individual';
     case Business = 'business';

@@ -1,9 +1,10 @@
 <?php
 
+use App\Enums\TransactionType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\TransactionType;
+
 return new class extends Migration
 {
     /**
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->enum('transaction_type', [TransactionType::Deposit->value, TransactionType::Withdraw->value]);
             $table->double('amount');
-            $table->decimal('fee', 10,2);
+            $table->decimal('fee', 10, 2);
             $table->date('date');
             $table->timestamps();
         });

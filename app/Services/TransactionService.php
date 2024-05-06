@@ -1,34 +1,35 @@
 <?php
+
 namespace App\Services;
 
-use Carbon\Carbon;
-use App\Enums\AccountType;
-use App\Models\Transaction;
 use App\Enums\TransactionType;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Deposit\CreateRequest;
 use App\Http\Requests\Withdraw\CreateRequest as WithdrawRequest;
+use App\Models\Transaction;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
     public function getTransactionData(): array
     {
-        return Cache::remember('transaction_data_' . auth()->id(), Carbon::now()->addMinutes(5), function () {
+        return Cache::remember('transaction_data_'.auth()->id(), Carbon::now()->addMinutes(5), function () {
             $transactions = Transaction::where('user_id', auth()->id())->paginate(10);
             $balance = auth()->user()->balance;
+
             return compact('transactions', 'balance');
         });
     }
 
     public function getDepositTransactionData(): array
     {
-        return Cache::remember('deposit_transaction_data_' . auth()->id(), Carbon::now()->addMinutes(5), function () {
+        return Cache::remember('deposit_transaction_data_'.auth()->id(), Carbon::now()->addMinutes(5), function () {
             $depositTransactions = Transaction::where('transaction_type', TransactionType::Deposit->value)
                 ->where('user_id', auth()->id())
                 ->paginate(10);
             $balance = auth()->user()->balance;
+
             return compact('depositTransactions', 'balance');
         });
     }
@@ -48,9 +49,8 @@ class TransactionService
                 ]);
             });
 
-   
-            Cache::forget('transaction_data_' . auth()->id());
-            Cache::forget('deposit_transaction_data_' . auth()->id());
+            Cache::forget('transaction_data_'.auth()->id());
+            Cache::forget('deposit_transaction_data_'.auth()->id());
 
             return true;
         } catch (\Exception $e) {
@@ -60,11 +60,12 @@ class TransactionService
 
     public function getWithdrawTransactionData(): array
     {
-        return Cache::remember('withdraw_transaction_data_' . auth()->id(), Carbon::now()->addMinutes(5), function () {
+        return Cache::remember('withdraw_transaction_data_'.auth()->id(), Carbon::now()->addMinutes(5), function () {
             $withdrawTransactions = Transaction::where('transaction_type', TransactionType::Withdraw->value)
                 ->where('user_id', auth()->id())
                 ->paginate(10);
             $balance = auth()->user()->balance;
+
             return compact('withdrawTransactions', 'balance');
         });
     }
@@ -92,8 +93,8 @@ class TransactionService
                 $status = ['success' => true, 'message' => 'Withdrawal added successfully.'];
             });
 
-            Cache::forget('transaction_data_' . auth()->id());
-            Cache::forget('withdraw_transaction_data_' . auth()->id());
+            Cache::forget('transaction_data_'.auth()->id());
+            Cache::forget('withdraw_transaction_data_'.auth()->id());
 
             return $status ?? ['success' => false, 'message' => 'An error occurred.'];
         } catch (\Exception $e) {

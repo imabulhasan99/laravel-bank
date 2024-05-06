@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum TransactionType :string
+enum TransactionType: string
 {
     case Deposit = 'deposit';
     case Withdraw = 'withdraw';
