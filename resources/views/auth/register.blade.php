@@ -15,6 +15,17 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+        <!-- Account Type -->
+        <div class="mt-4">
+            <x-input-label for="account_type" :value="__('Account Type')" />
+            <select id="account_type" name="account_type" class="form-select mt-1 block w-full" required>
+                <option value="{{ App\Enums\AccountType::Individual->value }}"
+                        @if(old('account_type') === App\Enums\AccountType::Individual->value) selected @endif>Individual</option>
+                <option value="{{ App\Enums\AccountType::Business->value }}"
+                        @if(old('account_type') === App\Enums\AccountType::Business->value) selected @endif>Business</option>
+            </select>
+            <x-input-error :messages="$errors->get('account_type')" class="mt-2" />
+        </div>
 
         <!-- Password -->
         <div class="mt-4">
